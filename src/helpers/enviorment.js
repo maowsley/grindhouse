@@ -6,8 +6,8 @@ switch(window.location.localhost) {
     APIURL = "http://localhost:3000";
     break;
 
-    case 'https://mao-grindhouse.herokuapp.com':
-        APIURL = "https://mao-grindhouse-server.herokuapp.com "
+    case 'https://maogrindhouse.herokuapp.com':
+        APIURL = "https://mao-grindhouse-server.herokuapp.com"
 }
 
 export default APIURL;
