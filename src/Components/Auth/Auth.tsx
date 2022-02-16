@@ -1,42 +1,30 @@
 import React from 'react';
-import { Container } from 'reactstrap';
+import {Container, Row, Col} from 'reactstrap';
 import Login from './Login/Login';
 import SignUp from './SignUp/SignUp';
 
 
-type State = {
-    isLogin: boolean,
-    isSignUp: boolean
-}
+type Props = {
+  updateToken: any;
+};
 
-export default class Auth extends React.Component<{}, State> {
-    constructor(props: any){
-        super(props)
+function Auth( {updateToken} : Props ) : any {
+  return(
+    <Container className="auth-container">
+    <Row>
+      <Col md="6">
+        <SignUp 
+          updateToken={updateToken} 
+        />
+      </Col>
+      <Col md="6">
+        <Login 
+          updateToken={updateToken} 
+        />
+      </Col>
+    </Row>
+  </Container>
+  );
+};
 
-        this.state = {
-            isLogin: false,
-            isSignUp: false 
-        }
-    }
-
-    isLoginHandler() {
-        this.setState({
-            isLogin: !this.state.isLogin
-        })
-    }
-
-    isSignUpHandler() {
-        this.setState({
-            isSignUp: !this.state.isSignUp
-        })
-    }
-
-    render(){
-        return (
-            <Container>
-                <Login isLogin={this.state.isLogin} isLoginHandler={this.isLoginHandler.bind(this)} />
-                <SignUp isSignUp={this.state.isSignUp} isSignUpHandler={this.isSignUpHandler.bind(this)} />
-            </Container>
-        )
-    }
-}
+export default Auth;

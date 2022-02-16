@@ -1,112 +1,78 @@
-import React, { Component} from "react";
-import APIURL from "../../../helpers/enviorment";
-import {Container} from 'reactstrap';
-import LoginDisplay from './LoginDisplay';
-import { EnumType } from "typescript";
+import * as React from 'react';
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import APIURL from '../../../helpers/enviorment'
 
-
-type Props = {
-    isLogin: boolean,
-    isLoginHandler: () => void
+interface Props {
+  updateToken?: any
 }
 
+interface LoginState {
+  username: string,
+  password: string,
+  role: any
+}
 
-type DataL = {
-    username: string,
-    password: string,
-    role: any,
-    wrongPassword: boolean,
-    usernameUnknown: boolean
+export default class Login extends React.Component<Props, LoginState> {
+  state: LoginState = {
+    username: '',
+    password: '',
+    role: " "
+  }
 
-};
+  handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({
+      ...this.state,
+      [event.target.name]: event.target.value
+    })
+  }
 
-
-
-export default class Login extends React.Component<Props, DataL> {
-    constructor(props:Props) {
-        super(props)
-        
-        
-        
-        this.state = {
-            username: " ",
-            password: " ",
-            role: " ",
-            wrongPassword: false,
-            usernameUnknown: false 
-           
-        };
-    }
-
-    //compoment did mount 
-    
-        handleSubmit = (event: any) => {
-            event.preventDefault();
-            fetch(`${APIURL}/user/login`, {
-                method: "POST",
-                body: JSON.stringify({email:this.state.username, password: this.state.password, role: this.state.role}),
-                headers: new Headers({
-                    'Content-Type': 'application/json'
-                })
-            }) .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    if (data.error === 'bad gateway') {
-                        console.log('stop');
-                        this.setState({
-                            wrongPassword: true
-                        })
-                    }
-                    if (data.error === 'failed to authenticate') {
-                        this.setState({
-                            usernameUnknown:true
-                        })
-                    }
-                })
+  handleSubmit = (event: React.FormEvent): void => {
+    event.preventDefault()
+    fetch(`${APIURL}/user/login`, {
+      method: 'POST',
+      body: JSON.stringify({
+        user: {
+          username: this.state.username,
+          password: this.state.password,
+          role: this.state.role
         }
-        
-        onUsernameChange(e: any) {
-            this.setState({
-                username: e.target.value
-            })
-        }
+      }),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    }).then(
+      (response) => response.json()
+    ).then((data) => {
+      this.props.updateToken(data.sessionToken)
+    })
+  }
 
-        onPasswordChange(e: any) {
-            this.setState({
-                password: e.target.value
-            })
-        }
-
-        onRoleChange(e:any) {
-            this.setState({
-                role: e.target.value
-            })
-        }
-
-
-     
-
-    render() {
-        return (
-            <div className="mainDiv">
-                <Container>
-                    <h1>Login</h1>
-                    {console.log(this.props.isLogin)}
-                    <LoginDisplay
-                    wrongPassword={this.state.wrongPassword}
-                    usernameUnknown={this.state.usernameUnknown}
-                    onChange={this.handleSubmit}
-                    isLogin={this.props.isLogin}
-                    isLoginHandler={this.props.isLoginHandler}
-                    onUsernameChange={this.onUsernameChange.bind(this)}
-                    onPasswordChange={this.onPasswordChange.bind(this)}
-                    onRoleChange={this.onRoleChange.bind(this)}
-                    />
-                        
-                </Container>
-            </div>
-        )
-    }
-
-
+  render() {
+    return (
+      <Form
+        onSubmit={this.handleSubmit}
+      >
+        <FormGroup>
+          <Label htmlFor="username">UserName</Label>
+          <Input
+            onChange={this.handleChange} value={this.state.username}
+            name="username" type="text" required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="password">Password</Label>
+          <Input
+            onChange={this.handleChange} value={this.state.password}
+            name="password" type="password" required/>
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor='role'>Role</Label>
+        <Input 
+            onChange={this.handleChange} value={this.state.role}
+            typeof="Role" name="role" required />
+        </FormGroup>
+        <Button type="submit">Login</Button>
+      </Form>
+    )
+  }
 }
