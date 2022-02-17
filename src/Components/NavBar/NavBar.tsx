@@ -1,34 +1,53 @@
-import React from "react"
-import './NavBar.css';
+import * as React from 'react';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  Button
+} from 'reactstrap';
 
+interface NavProps {
+  clearToken: any;
+};
 
-
-
-
-
-
-
-class Navbar extends React.Component {
-    constructor(props: {}) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <div className="NavBar">
-              
-                <div className="LogoText">GRINDHOUSE</div>
-                <div className="CoffeeSearchHome">Menu</div>
-                <div className="HomeHome">Home</div>
-                <div className="ReviewsH">Reviews</div>
-                <div className="CoffeeNotesH">CoffeeNotes</div>
-            
-            </div>
-
-        )
-    }
+interface NavState {
+  isOpen: boolean;
 }
 
+export default class Sitebar extends React.Component<NavProps, NavState> {
+  state: NavState = {
+    isOpen: false
+  }
+
+  toggle = (): void => {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+
+  render() {
+    return (
+      <Navbar color="faded" light expand="md">
+        <NavbarBrand href="/">GRINDHOUSE</NavbarBrand>
+        <NavbarToggler
+          onClick={this.toggle}
+        />
+        <Collapse
+          isOpen={this.state.isOpen}
+          navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <Button
+                onClick={this.props.clearToken}
+              >Logout</Button>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    );
+  }
+}
+    
 
 
-export default Navbar;

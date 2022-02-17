@@ -1,0 +1,104 @@
+.NavBar {
+    position: absolute;
+    width: 1920px;
+    height: 200px;
+    left: 0px;
+    top: 0px;
+    
+    
+    }
+    
+    .LogoText {
+    position: absolute;
+    width: 436px;
+    height: 72px;
+    left: 720px;
+    top: 20px;
+    z-index: 1;
+    
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 72px;
+    /* identical to box height */
+    
+    letter-spacing: 0.23em;
+    
+    color: #DCC9B6;
+    }
+    
+    .CoffeeSearchHome {
+    position: absolute;
+    width: 957px;
+    height: 62px;
+    left: 170px;
+    top: 37px;
+    z-index: 1;
+    
+    
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 36px;
+    letter-spacing: 0.23em;
+    
+    color: #DCC9B6;
+    }
+    
+    .HomeHome {
+    position: absolute;
+    width: 805px;
+    height: 104px;
+    left: 449px;
+    top: 37px;
+    
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 36px;
+    letter-spacing: 0.23em;
+    
+    color: #DCC9B6;
+    z-index: 1;
+    }
+    
+    .ReviewsH {
+    position: absolute;
+    width: 526px;
+    height: 85px;
+    left: 1280px;
+    top: 37px;
+    
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 36px;
+    letter-spacing: 0.23em;
+    
+    color: #DCC9B6;
+    z-index: 1;
+    
+    }
+    
+    .CoffeeNotesH {
+    position: absolute;
+    width: 644px;
+    height: 72px;
+    left: 1540px;
+    top: 37px;
+    z-index: 1;
+    
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 36px;
+    letter-spacing: 0.23em;
+    
+    color: #DCC9B6;
+    
+    }

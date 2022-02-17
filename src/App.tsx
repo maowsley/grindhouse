@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Auth from './Components/Auth/Auth';
-import Navbar from './Components/NavBar/NavBar';
+import Sitebar from './Components/NavBar/NavBar';
 import { render } from '@testing-library/react';
+import ReviewIndex from './Components/Reviews/ReviewsIndex';
+import NoteIndex from './Components/DrinkNotes/CoffeeNotesIndex';
 
 
 
@@ -34,16 +35,16 @@ export default class App extends React.Component<any, SessionToken> {
 
   //proctcedviews used to protect notes, and reviews and user login.signup
   protectedViews = (): any => {
-    return (this.state.token === localStorage.getItem('token') ? <DrinkNoteIndex token={this.state.token} /> : 
-    <ReviewsIndex token={this.state.token} /> : 
-    <Auth updateToken={this.updateToken} />)
-  }
+    return (this.state.token === localStorage.getItem('token') ? 
+    <NoteIndex token={this.state.token} /> : 
+     <><ReviewIndex token={this.state.token} /><Auth updateToken={this.updateToken} /></>
+    )}
 
 
   render() {
     return (
       <div className='mainDiv'>
-        <Navbar clearToken={this.clearToken} />
+        <Sitebar clearToken={this.clearToken} />
         {this.protectedViews()}
       </div>    
       )
