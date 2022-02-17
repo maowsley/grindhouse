@@ -4,7 +4,7 @@ import ReviewsCreate from './CreateReviews';
 import { Component } from 'react';
 import APIURL from '../../helpers/enviorment';
 import ReviewCard from './ReviewsCards';
-
+import SiteBar from '../NavBar/NavBar';
 
 
 interface InReviewsIndex {
@@ -18,6 +18,8 @@ interface InReviewsIndex {
 interface IProps {
   token: string;
 }
+
+
 
 export default class ReviewIndex extends React.Component<IProps, InReviewsIndex> {
   state: InReviewsIndex = {
@@ -98,8 +100,11 @@ deleteReview = (): void => {
 
   render() {
     return (
+      
       <Container>
+       
         <Row>
+         
           <Col md="3">
             <ReviewsCreate fetchReviews={this.fetchReviews} token={this.props.token}  />
           </Col>

@@ -42,7 +42,7 @@ class Home extends React.Component<{}, {}> {
             <Button variant="secondary" size="lg" className="custom-btn">Home</Button>{" "}
             <div className="CoffeeMenuHome">
             <p className="menuHTitle">
-            Coffee Menu @{"\n"}
+            Coffee Notes @{"\n"}
             Your Finger Tips
             </p>
            
@@ -57,7 +57,7 @@ class Home extends React.Component<{}, {}> {
             </p>
             <img src={blackRec} className="blackRec"></img>
             <img src={coffeePour} className="coffeePour"></img>
-            <Button variant="secondary" size="lg" id="custom-btn">Menu</Button>
+            <Button variant="secondary" size="lg" id="custom-btn">Coffee Notes</Button>
             <img src={topgraph} className="top"></img>
             
            
@@ -65,8 +65,7 @@ class Home extends React.Component<{}, {}> {
             <img src={square} className="squareHome"></img>
             <img src={coffeeGif} className="gif"></img>
             <text className="reviewsH"> 
-            5 Star Reviews +{"\n"}
-            Coffee Notes
+            5 Star Reviews 
             </text>
             <text className="notesText">
                 The GRINDHOUSE has become eveyone's{"\n"}
@@ -79,7 +78,6 @@ class Home extends React.Component<{}, {}> {
           
             <Button variant="primary">Reviews</Button>
           
-            <Button variant="primary" className="notesbutton">Coffee Notes</Button>
        
                      
             </div>

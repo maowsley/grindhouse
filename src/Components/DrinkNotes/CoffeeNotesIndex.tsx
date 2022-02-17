@@ -6,7 +6,13 @@ import APIURL from '../../helpers/enviorment';
 import NoteTable from './CoffeeCards';
 
 
+
+
+
+
+
 interface NotesIndexDetails {
+  
   notes: Array<any>;
   updateActive: boolean,
   noteToUpdate: Object,
@@ -99,6 +105,9 @@ deleteNote = (): void => {
 
 
 
+
+
+
   componentDidMount(): void {
     this.fetchNotes();
   }
@@ -129,7 +138,9 @@ deleteNote = (): void => {
 
   render() {
     return (
+      
       <Container>
+       
         <Row>
           <Col md="3">
             <NotesCreate fetchNotes={this.fetchNotes} token={this.props.token} />
@@ -146,4 +157,7 @@ deleteNote = (): void => {
       </Container>
     )
   }
-}
+ 
+  
+  
+};

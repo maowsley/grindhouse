@@ -8,7 +8,7 @@
     
     }
     
-    .LogoText {
+    .navbar-item1 {
     position: absolute;
     width: 436px;
     height: 72px;
@@ -28,7 +28,7 @@
     color: #DCC9B6;
     }
     
-    .CoffeeSearchHome {
+    .navbar-item2 {
     position: absolute;
     width: 957px;
     height: 62px;
@@ -47,7 +47,7 @@
     color: #DCC9B6;
     }
     
-    .HomeHome {
+    .navbar-item3{
     position: absolute;
     width: 805px;
     height: 104px;
@@ -65,7 +65,7 @@
     z-index: 1;
     }
     
-    .ReviewsH {
+    .navbar-item4 {
     position: absolute;
     width: 526px;
     height: 85px;
@@ -84,7 +84,7 @@
     
     }
     
-    .CoffeeNotesH {
+    .navbar-item5 {
     position: absolute;
     width: 644px;
     height: 72px;

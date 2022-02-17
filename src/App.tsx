@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import './App.css';
 import Auth from './Components/Auth/Auth';
-import Sitebar from './Components/NavBar/NavBar';
 import { render } from '@testing-library/react';
 import ReviewIndex from './Components/Reviews/ReviewsIndex';
 import NoteIndex from './Components/DrinkNotes/CoffeeNotesIndex';
+import Home from './Components/Home/Home';
+import Header from './Components/HeaderBar/HeaderBar';
+import Sitebar from './Components/NavBar/NavBar';
 
 
 
@@ -38,14 +40,24 @@ export default class App extends React.Component<any, SessionToken> {
     return (this.state.token === localStorage.getItem('token') ? 
     <NoteIndex token={this.state.token} /> : 
      <><ReviewIndex token={this.state.token} /><Auth updateToken={this.updateToken} /></>
+     
     )}
 
 
   render() {
     return (
+    
       <div className='mainDiv'>
+        < Header />
+        <Home />
+        
         <Sitebar clearToken={this.clearToken} />
         {this.protectedViews()}
+     
+        
+    
+        
+        
       </div>    
       )
   }
