@@ -21,7 +21,7 @@ class Home extends React.Component<{}, {}> {
             <div>
                
             <div className="Home">
-            <Header />
+           
             <div className="homemuglogo">
                 < FaCoffee size={'800px'} />
             </div>

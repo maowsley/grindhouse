@@ -9,7 +9,7 @@ interface Props {
 interface SignupState {
   username: string,
   password: string,
-  role: any
+  role: "user" | "admin" | "disabled "
 
 }
 

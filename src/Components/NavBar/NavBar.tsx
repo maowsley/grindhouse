@@ -29,7 +29,7 @@ export default class Sitebar extends React.Component<NavProps, NavState> {
   render() {
     return (
       <Navbar color="faded" light expand="md">
-        <NavbarBrand href="/">GRINDHOUSE</NavbarBrand>
+        {/* <NavbarBrand href="/">GRINDHOUSE</NavbarBrand> */}
         <NavbarToggler
           onClick={this.toggle}
         />
@@ -38,9 +38,7 @@ export default class Sitebar extends React.Component<NavProps, NavState> {
           navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <Button
-                onClick={this.props.clearToken}
-              >Logout</Button>
+
             </NavItem>
           </Nav>
         </Collapse>

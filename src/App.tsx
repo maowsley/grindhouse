@@ -7,7 +7,11 @@ import NoteIndex from './Components/DrinkNotes/CoffeeNotesIndex';
 import Home from './Components/Home/Home';
 import Header from './Components/HeaderBar/HeaderBar';
 import Sitebar from './Components/NavBar/NavBar';
-
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from 'react-router-dom';
 
 
 interface SessionToken {
@@ -19,13 +23,13 @@ interface SessionToken {
 
 export default class App extends React.Component<any, SessionToken> {
   state: SessionToken = {
-    token: ' '
+    token: ''
   }
 
   clearToken = (): void => {
     localStorage.clear();
     this.setState(
-      {token: ' '}
+      {token: ''}
     );
     alert('Welcome Back to the GrindHouse!')
   }
@@ -36,29 +40,40 @@ export default class App extends React.Component<any, SessionToken> {
   }
 
   //proctcedviews used to protect notes, and reviews and user login.signup
-  protectedViews = (): any => {
+  protectedViews = (): JSX.Element => {
     return (this.state.token === localStorage.getItem('token') ? 
     <NoteIndex token={this.state.token} /> : 
-     <><ReviewIndex token={this.state.token} /><Auth updateToken={this.updateToken} /></>
+     <><ReviewIndex token={this.state.token} /></>
      
     )}
 
 
   render() {
     return (
-    
       <div className='mainDiv'>
-        < Header />
-        <Home />
+        <BrowserRouter>
+         < Header token={this.state.token}
+                  clearToken={this.clearToken}/>
+
+         {
+           this.state.token &&
+           <Sitebar clearToken={this.clearToken} />
+          }
+          <Routes > 
+            <Route path="/" element={<Home />}/>
+            <Route path="/auth" element={<Auth updateToken={this.updateToken} />}/>
+        {/* {this.protectedViews()}  */}
+          </Routes>
         
-        <Sitebar clearToken={this.clearToken} />
-        {this.protectedViews()}
+        
+      
      
         
     
         
         
-      </div>    
+       </BrowserRouter>
+      </div>
       )
   }
 

@@ -1,4 +1,4 @@
-.NavBar {
+/* .NavBar {
     position: absolute;
     width: 1920px;
     height: 200px;
@@ -6,8 +6,17 @@
     top: 0px;
     
     
+    } */
+    .NavBar {
+        display: flex;
+        gap: 1em;
+        justify-content: center;
     }
-    
+
+    .NavBarItem {
+        z-index:1;
+        text-decoration: none !important;
+    }
     .navbar-item1 {
     position: absolute;
     width: 436px;

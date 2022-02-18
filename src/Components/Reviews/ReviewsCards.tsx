@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Card, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarDay, faRunning, faStickyNote, faStopwatch } from '@fortawesome/free-solid-svg-icons'
+
 
 
 export interface ReviewCardProps {
@@ -17,7 +17,7 @@ const ReviewCard: React.SFC<ReviewCardProps> = (props) => {
     <Card>
       <CardBody>
         <CardTitle>
-          <FontAwesomeIcon icon={faCalendarDay} />
+ 
           {Intl.DateTimeFormat('en-US', {
             year: 'numeric',
             month: 'short',
@@ -32,19 +32,19 @@ const ReviewCard: React.SFC<ReviewCardProps> = (props) => {
           }).format(convertUpdated)}
         </CardText>
         <CardSubtitle>
-          <FontAwesomeIcon icon={faRunning} />
+ 
           {props.review.title}
         </CardSubtitle>
         <CardText>
-        <FontAwesomeIcon icon={faStopwatch} />
+    
           {props.review.user_username}
         </CardText>
         <CardText>
-        <FontAwesomeIcon icon={faStickyNote} />
+       
           {props.review.content}
         </CardText>
         <CardText>
-        <FontAwesomeIcon icon={faStickyNote} />
+       
           {props.review.rating}
         </CardText>
       </CardBody>
