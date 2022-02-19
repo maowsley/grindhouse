@@ -2,29 +2,31 @@ import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import APIURL from '../../../helpers/enviorment'
 
+
+
+
+
+
 interface Props {
-  updateToken?: any;
+  updateToken?:  any;
 }
-
-interface SignupState {
+ interface SignupState {
   username: string,
-  password: string,
-  role: "user" | "admin" | "disabled "
-
+  password: string
+  
 }
 
 
 
 
 
-
-export default class Signup extends React.Component<Props, SignupState> {
+export default class Signup extends React.Component<Props, SignupState > {
    
   
   state: SignupState = {
     username: '',
-    password: '',
-    role: '',
+    password: ''
+    
     
   }
 
@@ -42,8 +44,8 @@ export default class Signup extends React.Component<Props, SignupState> {
       body: JSON.stringify({
         user: {
           username: this.state.username,
-          password: this.state.password,
-          role: this.state.role
+          password: this.state.password
+          
          
         }
       }),
@@ -52,7 +54,7 @@ export default class Signup extends React.Component<Props, SignupState> {
       })
     }).then(
       (response) => response.json()
-    ).then((data) => {
+    ).then((data) =>   {
       this.props.updateToken(data.sessionToken)
     })
   }
@@ -71,12 +73,6 @@ export default class Signup extends React.Component<Props, SignupState> {
           <Input
             onChange={this.handleChange} value={this.state.password}
             name="password" type="password" required/>
-        </FormGroup>
-        <FormGroup>
-          <Label htmlFor='role'>Role</Label>
-        <Input 
-            onChange={this.handleChange} value={this.state.role}
-            typeof="Role" name="role" required/>
         </FormGroup>
         <Button type="submit">Sign Up</Button>
       </Form>

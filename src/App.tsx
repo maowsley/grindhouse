@@ -6,7 +6,7 @@ import ReviewIndex from './Components/Reviews/ReviewsIndex';
 import NoteIndex from './Components/DrinkNotes/CoffeeNotesIndex';
 import Home from './Components/Home/Home';
 import Header from './Components/HeaderBar/HeaderBar';
-import Sitebar from './Components/NavBar/NavBar';
+
 import {
   BrowserRouter,
   Routes,
@@ -55,10 +55,6 @@ export default class App extends React.Component<any, SessionToken> {
          < Header token={this.state.token}
                   clearToken={this.clearToken}/>
 
-         {
-           this.state.token &&
-           <Sitebar clearToken={this.clearToken} />
-          }
           <Routes > 
             <Route path="/" element={<Home />}/>
             <Route path="/auth" element={<Auth updateToken={this.updateToken} />}/>

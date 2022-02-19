@@ -4,7 +4,7 @@ import ReviewsCreate from './CreateReviews';
 import { Component } from 'react';
 import APIURL from '../../helpers/enviorment';
 import ReviewCard from './ReviewsCards';
-import SiteBar from '../NavBar/NavBar';
+
 
 
 interface InReviewsIndex {
