@@ -1,11 +1,13 @@
 
 html,body
 {
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0px !important;
-    padding: 0px !important;
-    overflow-x: hidden !important; 
-    background-color: #6D4C3D !important;
+    
+    
+    
+    
+    height: 100vh;
+    padding:0;
+    margin:0;
+  
     z-index: 0 !important;
 }

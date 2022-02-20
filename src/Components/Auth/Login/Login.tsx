@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import APIURL from '../../../helpers/enviorment'
+import './LoginDisplay.css';
 
 interface Props {
   updateToken?: any
@@ -9,14 +10,14 @@ interface Props {
 interface LoginState {
   username: string,
   password: string,
-  role: any
+
 }
 
 export default class Login extends React.Component<Props, LoginState> {
   state: LoginState = {
     username: '',
-    password: '',
-    role: " "
+    password: ''
+    
   }
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -33,8 +34,7 @@ export default class Login extends React.Component<Props, LoginState> {
       body: JSON.stringify({
         user: {
           username: this.state.username,
-          password: this.state.password,
-          role: this.state.role
+          password: this.state.password
         }
       }),
       headers: new Headers({
@@ -49,10 +49,10 @@ export default class Login extends React.Component<Props, LoginState> {
 
   render() {
     return (
-      <Form
+      <Form className='forms'
         onSubmit={this.handleSubmit}
       >
-        <FormGroup>
+        <FormGroup className='post'>
           <Label htmlFor="username">UserName</Label>
           <Input
             onChange={this.handleChange} value={this.state.username}
@@ -64,12 +64,6 @@ export default class Login extends React.Component<Props, LoginState> {
           <Input
             onChange={this.handleChange} value={this.state.password}
             name="password" type="password" required/>
-        </FormGroup>
-        <FormGroup>
-          <Label htmlFor='role'>Role</Label>
-        <Input 
-            onChange={this.handleChange} value={this.state.role}
-            typeof="Role" name="role" required />
         </FormGroup>
         <Button type="submit">Login</Button>
       </Form>

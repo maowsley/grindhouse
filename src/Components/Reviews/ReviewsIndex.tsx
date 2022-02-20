@@ -4,6 +4,7 @@ import ReviewsCreate from './CreateReviews';
 import { Component } from 'react';
 import APIURL from '../../helpers/enviorment';
 import ReviewCard from './ReviewsCards';
+import './ReviewIndex.css';
 
 
 
@@ -100,24 +101,25 @@ deleteReview = (): void => {
 
   render() {
     return (
-      
-      <Container>
+      <div className="revBack">
+      <Container >
        
         <Row>
          
-          <Col md="3">
+         
             <ReviewsCreate fetchReviews={this.fetchReviews} token={this.props.token}  />
-          </Col>
-          <Col md="9">
+        
+        
             {this.state.reviews.length > 0 ? 
                 this.state.reviews.map(review => {
                   return <ReviewCard key={review.id} review={review} />
-                }) 
-              : <h1>Create and special Coffee Note</h1>
+                }) : <h1></h1>
+          
             }
-          </Col>
+  
         </Row>
       </Container>
+      </div>
     )
   }
 }

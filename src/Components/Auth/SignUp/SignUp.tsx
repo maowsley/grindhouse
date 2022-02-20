@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import APIURL from '../../../helpers/enviorment'
+import './SignUpDisplay.css';
 
 
 
@@ -61,10 +62,11 @@ export default class Signup extends React.Component<Props, SignupState > {
 
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <FormGroup>
+      <div className='mainDiv'>
+      <Form className='forms' onSubmit={this.handleSubmit}>
+        <FormGroup className='post'>
           <Label htmlFor="username">Username</Label>
-          <Input
+          <Input className='boxbox'
             onChange={this.handleChange} value={this.state.username}
             name="username" type="text" required />
         </FormGroup>
@@ -76,6 +78,7 @@ export default class Signup extends React.Component<Props, SignupState > {
         </FormGroup>
         <Button type="submit">Sign Up</Button>
       </Form>
+      </div>
     )
   }
 }

@@ -4,7 +4,7 @@ import NotesCreate from './CreateCoffeeNotes';
 //import WorkoutTable from './WorkoutTable';
 import APIURL from '../../helpers/enviorment';
 import NoteTable from './CoffeeCards';
-
+import './notesDisplay.css';
 
 
 
@@ -138,7 +138,7 @@ deleteNote = (): void => {
 
   render() {
     return (
-      
+      <div className='notesBac'>
       <Container>
        
         <Row>
@@ -155,7 +155,9 @@ deleteNote = (): void => {
           </Col>
         </Row>
       </Container>
-    )
+      </div>
+     
+    );
   }
  
   

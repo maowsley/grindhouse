@@ -1,6 +1,7 @@
 import  React, {Component} from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import APIURL from '../../helpers/enviorment';
+import './notesDisplay.css';
 
 
 export enum Details {
@@ -80,40 +81,39 @@ class NotesCreate extends React.Component<NotesCreateProps, NotesCreateState> {
 
   render() {
     return (
-      <div>
-        <h3>Never forget a your favorite drink combination. Save your coffee notes below!</h3>
-        <Form onSubmit={this.handleSubmit}>
+     
+        
+        <Form className='forms' onSubmit={this.handleSubmit}>
+        <h3>Never forget your favorite drink combination. Save your coffee notes below!</h3>
           <FormGroup>
+            <h5>Username</h5>
             <Label htmlFor="user_username" />
             <Input onChange={this.handleChange} typeof="user_username" name="user_username" value={this.state.user_username} />
           </FormGroup>
           <FormGroup>
+            <h5>Drink Name</h5>
             <Label htmlFor="drinkName" />
             <Input onChange={this.handleChange} type="text" name="drinkName" value={this.state.drinkName}>
             </Input>
           </FormGroup>
           <FormGroup>
+            <h5>Hot or Cold?</h5>
             <Label htmlFor="drinkTemp" />
             <Input onChange={this.handleChange} typeof="drinkTemp" name="drinkTemp" placeholder="Hot or Cold Drink?" value={this.state.drinkTemp} />
-            <option>Hot or Cold Drink?</option>
-              <option value="hot">Hot</option>
-              <option value="cold">Cold</option>
           </FormGroup>
           <FormGroup>
+            <h5>Notes?</h5>
             <Label htmlFor="notes" />
             <Input onChange={this.handleChange} type="textarea" name="content" placeholder="Notes" value={this.state.content} />
           </FormGroup>
           <FormGroup>
+            <h5>Small, Medium or Large?</h5>
             <Label htmlFor="size" />
             <Input onChange={this.handleChange} typeof="size" name="size" placeholder="Small, Medium, Large?" value={this.state.size} />
-            <option>Small, Medium or Large?</option>
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
           </FormGroup>
           <Button type="submit">Save Coffee Note</Button>
         </Form>
-      </div>
+     
     );
   }
 }

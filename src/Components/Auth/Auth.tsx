@@ -1,29 +1,37 @@
 import React from 'react';
-import {Container, Row, Col} from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import Login from './Login/Login';
 import SignUp from './SignUp/SignUp';
+import './Auth.css';
 
 
 type Props = {
   updateToken: any;
+
 };
 
-function Auth( {updateToken} : Props ) : any {
-  return(
-    <Container className="auth-container">
-    <Row>
-      <Col md="6">
-        <SignUp 
-          updateToken={updateToken} 
+
+
+
+
+function Auth({ updateToken }: Props): any {
+
+
+  return (
+
+    <div className='maindiv'>
+
+      <div className="cupcup">
+      <Container className='cont'>
+        <SignUp
+          updateToken={updateToken}
         />
-      </Col>
-      <Col md="6">
-        <Login 
-          updateToken={updateToken} 
+        <Login
+          updateToken={updateToken}
         />
-      </Col>
-    </Row>
-  </Container>
+      </Container>
+      </div>
+    </div>
   );
 };
 

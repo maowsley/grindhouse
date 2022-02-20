@@ -4,7 +4,13 @@ import Home from '../Home/Home';
 import Signup from  '../Auth/SignUp/SignUp';
 import APIURL from "../../helpers/enviorment";
  import {Link} from 'react-router-dom';
-import {Button} from "reactstrap";
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
   
 
 
@@ -12,36 +18,47 @@ interface HeaderProps {
     clearToken: () => void,
     token: string
   };
-  class Header extends React.Component<HeaderProps, {}> {
+  export default class Header extends React.Component<HeaderProps, {}> {
     constructor(props: HeaderProps) {
         super(props)
 
-    }
+    };
 
-    render() {
-        return (
-            <div className="NavBar">
-       
-            {/* <section className="navbar"> */}
-                {this.props.token &&
-            <Button
-                onClick={this.props.clearToken}
-              >Logout</Button> 
-              }
-                <Link className="NavBarItem" to='/' >GRINDHOUSE</Link>
-                <Link className="NavBarItem" to="/auth">SignUp/Login</Link>
-            {/* <a href="/" className="navbar-item1">GRINDHOUSE</a> */}
-            {/* <a href="https://maogrindhouse.herokuapp.com/user/signupn" className="navbar-item2">SignUp</a>
-            <a href="/Login" className="navbar-item3">Login</a>
-            <a href="/Notes" className="navbar-item4">CoffeeNotes</a>
-            <a href="/Reviews" className="navbar-item5">Reviews</a> */}
-            {/* </section> */}
-            </div>
+  render() {
+      return (
+      <div className="NavBar">
+                 <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+           <MenuIcon />
+           </IconButton>
+           <Typography variant="h6" component='div' sx={{flexGrow: 1}}>
+           <Link className="NavBarItem" to='/' >GRINDHOUSE</Link>
 
-        )
-    }
-}
+           </Typography>
+           <Link className="NavBarItem" to="/auth">SignUp/Login</Link>
+           <Link className="NavBarItem" to='/reviews'>Reviews</Link>
+           <Link className="NavBarItem" to='/auth'>Coffee Notes</Link>
+           {this.props.token &&
+           <Button   onClick={this.props.clearToken} color="inherit">Logout</Button>
+            };
+            </Toolbar>
+            </AppBar>
+            </Box>
+            );
+      
+          </div>
+      );
+  };  
+};
 
 
 
-export default Header;
+

@@ -46,6 +46,7 @@ export default class App extends React.Component<any, SessionToken> {
      <><ReviewIndex token={this.state.token} /></>
      
     )}
+ 
 
 
   render() {
@@ -58,7 +59,10 @@ export default class App extends React.Component<any, SessionToken> {
           <Routes > 
             <Route path="/" element={<Home />}/>
             <Route path="/auth" element={<Auth updateToken={this.updateToken} />}/>
-        {/* {this.protectedViews()}  */}
+            <Route path='/notes' element={<NoteIndex token={''}/>} />
+            <Route path='/reviews' element={<ReviewIndex token={''}/>} />
+
+   
           </Routes>
         
         

@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Component } from 'react';
 import APIURL from '../../helpers/enviorment';
+import'./CreateReview.css';
 
 export interface ReviewCreateProps {
   token : string;
@@ -79,25 +80,31 @@ class ReviewsCreate extends React.Component<ReviewCreateProps, ReviewCreateState
   render() {
     return (
       <div>
+      
+        <Form className='forms' onSubmit={this.handleSubmit}>
         <h3>Tell the world about GrindHouse!</h3>
-        <Form onSubmit={this.handleSubmit}>
           <FormGroup>
+            <h3>Date</h3>
             <Label htmlFor="date" />
             <Input onChange={this.handleChange} typeof="any" name="created_at" value={this.state.created_at} />
           </FormGroup>
           <FormGroup>
+            <h3>Username</h3>
             <Label htmlFor="user_username" />
             <Input onChange={this.handleChange} type="text" name="user_username" placeholder="Username" value={this.state.user_username} />
           </FormGroup>
           <FormGroup>
+            <h3>Title of review</h3>
             <Label htmlFor="title" />
             <Input onChange={this.handleChange} type="text" name="title" placeholder="Name of Review Title" value={this.state.title} />
           </FormGroup>
           <FormGroup>
+            <h3>Use space below to write your review</h3>
             <Label htmlFor="content" />
             <Input onChange={this.handleChange} type="textarea" name="content" placeholder="Enter Review" value={this.state.content} />
           </FormGroup>
           <FormGroup>
+            <h3>Rating us from 1-10</h3>
             <Label htmlFor="rating" />
             <Input onChange={this.handleChange} type="number" name="rating" placeholder="Rate GrindHouse 1-10" value={this.state.rating} />
           </FormGroup>
