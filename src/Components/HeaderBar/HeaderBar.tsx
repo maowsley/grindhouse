@@ -47,7 +47,7 @@ interface HeaderProps {
            <Link className="NavBarItem" to='/reviews'>Reviews</Link>
            <Link className="NavBarItem" to='/auth'>Coffee Notes</Link>
            {this.props.token &&
-           <Button   onClick={this.props.clearToken} color="inherit">Logout</Button>
+           <Button className="button"  onClick={this.props.clearToken} >Logout</Button>
             };
             </Toolbar>
             </AppBar>

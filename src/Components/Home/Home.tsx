@@ -39,6 +39,7 @@ class Home extends React.Component<{}, {}> {
             and other non caffeinated drinks such as luxury hot{"\n"}
             chocolate.
             </p>
+            
             <Button variant="secondary" size="lg" className="custom-btn">Home</Button>{" "}
             <div className="CoffeeMenuHome">
             <p className="menuHTitle">
