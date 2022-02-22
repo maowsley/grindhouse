@@ -44,7 +44,7 @@ interface HeaderProps {
 
            </Typography>
            <Link className="NavBarItem" to="/auth">SignUp/Login</Link>
-           <Link className="NavBarItem" to='/reviews'>Reviews</Link>
+           <Link className="NavBarItem" to='/getallReviews'>Reviews</Link>
            <Link className="NavBarItem" to='/auth'>Coffee Notes</Link>
            {this.props.token &&
            <Button className="button"  onClick={this.props.clearToken} >Logout</Button>
@@ -58,6 +58,7 @@ interface HeaderProps {
       );
   };  
 };
+
 
 
 

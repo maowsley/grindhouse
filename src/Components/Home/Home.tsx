@@ -9,7 +9,14 @@ import topgraph from "./coffehousetophome.svg";
 import square from "./blacksquare.png";
 import coffeeGif from "./coffeegifh.gif";
 import Header from "../HeaderBar/HeaderBar";
-
+import {Link} from 'react-router-dom';
+import Navigation from "../Navigation/Navigation";
+import {
+    BrowserRouter,
+    Routes,
+    Route
+  } from 'react-router-dom';
+  
 
 
 
@@ -17,10 +24,12 @@ import Header from "../HeaderBar/HeaderBar";
 class Home extends React.Component<{}, {}> {
   
     render() {
+   
         return (
             <div>
                
             <div className="Home">
+               
            
             <div className="homemuglogo">
                 < FaCoffee size={'800px'} />
@@ -40,7 +49,7 @@ class Home extends React.Component<{}, {}> {
             chocolate.
             </p>
             
-            <Button variant="secondary" size="lg" className="custom-btn">Home</Button>{" "}
+            <Link to="/"><Button variant="secondary" size="lg" className="custom-btn">Home</Button></Link>
             <div className="CoffeeMenuHome">
             <p className="menuHTitle">
             Coffee Notes @{"\n"}
@@ -58,7 +67,7 @@ class Home extends React.Component<{}, {}> {
             </p>
             <img src={blackRec} className="blackRec"></img>
             <img src={coffeePour} className="coffeePour"></img>
-            <Button variant="secondary" size="lg" id="custom-btn">Coffee Notes</Button>
+            <Link to='/auth'><Button variant="secondary" size="lg" id="custom-btn">Coffee Notes</Button></Link>
             <img src={topgraph} className="top"></img>
             
            
@@ -77,7 +86,7 @@ class Home extends React.Component<{}, {}> {
                 GRINDHOUSE customers!{"\n"}
             </text>
           
-            <Button variant="primary">Reviews</Button>
+            <Link to='/getallReviews'><Button variant="primary">Reviews</Button></Link>
           
        
                      

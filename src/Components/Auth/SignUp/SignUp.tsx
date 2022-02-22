@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import APIURL from '../../../helpers/enviorment'
 import './SignUpDisplay.css';
+import {Link} from 'react-router-dom';
 
 
 
@@ -50,9 +51,9 @@ export default class Signup extends React.Component<Props, SignupState > {
          
         }
       }),
-      headers: new Headers({
+       headers: new Headers({
         'Content-Type': 'application/json'
-      })
+       })
     }).then(
       (response) => response.json()
     ).then((data) =>   {
@@ -76,7 +77,7 @@ export default class Signup extends React.Component<Props, SignupState > {
             onChange={this.handleChange} value={this.state.password}
             name="password" type="password" required/>
         </FormGroup>
-        <Button type="submit">Sign Up</Button>
+        <Link to='/makeNotes'><Button type="submit">Sign Up</Button></Link>
       </Form>
       </div>
     )

@@ -6,12 +6,16 @@ import ReviewIndex from './Components/Reviews/ReviewsIndex';
 import NoteIndex from './Components/DrinkNotes/CoffeeNotesIndex';
 import Home from './Components/Home/Home';
 import Header from './Components/HeaderBar/HeaderBar';
+import ReviewsCreate from './Components/Reviews/CreateReviews';
+import NotesCreate from './Components/DrinkNotes/CreateCoffeeNotes';
+import CoffeeCard from './Components/DrinkNotes/CoffeeCards';
 
 import {
   BrowserRouter,
   Routes,
   Route
 } from 'react-router-dom';
+
 
 
 interface SessionToken {
@@ -59,10 +63,10 @@ export default class App extends React.Component<any, SessionToken> {
           <Routes > 
             <Route path="/" element={<Home />}/>
             <Route path="/auth" element={<Auth updateToken={this.updateToken} />}/>
-            <Route path='/notes' element={<NoteIndex token={''}/>} />
-            <Route path='/reviews' element={<ReviewIndex token={''}/>} />
-
-   
+            <Route path='/makeNotes' element={<NotesCreate token={''}/>}/>
+            <Route path='/reviews' element={<ReviewsCreate token={''}/>} />
+            <Route path='/getallReviews' element={ReviewIndex}/>
+            <Route path='/allNotes' element={CoffeeCard}/>
           </Routes>
         
         
@@ -79,6 +83,10 @@ export default class App extends React.Component<any, SessionToken> {
 
 
 }
+
+  
+
+
  
 
 

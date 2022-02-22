@@ -75,6 +75,24 @@ deleteReview = (): void => {
      })
 }
 
+editReview = (): void => {
+  let requestHeaders: any = {
+    'Content-Type': 'application/json',
+    'Authorization': this.props.token
+  }
+  fetch(`${APIURL}/reviews/edit/:review_id`, {
+    method: "PUT",
+    headers: requestHeaders
+   
+ })
+ .then((res) => res.json())
+ .then((editData) => {
+   console.log(editData.review);
+   this.setState({ reviews: editData.review })
+ })
+
+}
+
   componentDidMount(): void {
     this.fetchReviews();
   }
@@ -108,7 +126,7 @@ deleteReview = (): void => {
          
          
             <ReviewsCreate fetchReviews={this.fetchReviews} token={this.props.token}  />
-        
+            
         
             {this.state.reviews.length > 0 ? 
                 this.state.reviews.map(review => {

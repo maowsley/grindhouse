@@ -2,6 +2,7 @@ import  React, {Component} from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import APIURL from '../../helpers/enviorment';
 import './notesDisplay.css';
+import {Link} from 'react-router-dom';
 
 
 export enum Details {
@@ -29,46 +30,47 @@ export interface NotesCreateState {
 
 class NotesCreate extends React.Component<NotesCreateProps, NotesCreateState> {
     state: NotesCreateState = {
-    user_username: " ",
-    drinkName: ' ',
-    drinkTemp: " ",
-    content: ' ',
-    size: " "
+    user_username: "",
+    drinkName: '',
+    drinkTemp: '',
+    content: '',
+    size: ""
     
 
     }
 
   handleSubmit = (event: React.FormEvent): void => {
-    console.log(event)
     event.preventDefault();
     fetch(`${APIURL}/drinkNote/create`, {
-      method: 'POST', 
-      headers: new Headers({
-        'Content-Type': 'application/json', 
-        'Authorization': this.props.token
-      }),
+      method: "POST", 
       body: JSON.stringify({
-        log: {
+        note: {
           user_username: this.state.user_username,
           drinkName: this.state.drinkName,
           drinkTemp: this.state.drinkTemp,
           content: this.state.content,
           size: this.state.size
-        }
+        },
+      }),
+       headers: new Headers({
+        'Content-Type': 'application/json', 
+        'Authorization': `Bearer ${this.props.token}`
+      }),
+    
       })
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
+    
+      .then((res) => res.json())
+      .then((noteData) => {
+        console.log(noteData);
         this.setState({
-          user_username: " ",
-          drinkName: ' ',
-          drinkTemp: ' ',
-          content: ' ',
-          size: ' '
+          user_username: "",
+          drinkName: '',
+          drinkTemp: '',
+          content: '',
+          size: '',
         });
         this.props.fetchNotes();
-      })
+      });
 
   }
 
@@ -82,13 +84,13 @@ class NotesCreate extends React.Component<NotesCreateProps, NotesCreateState> {
   render() {
     return (
      
-        
+        <div className='notesBac'>
         <Form className='forms' onSubmit={this.handleSubmit}>
         <h3>Never forget your favorite drink combination. Save your coffee notes below!</h3>
           <FormGroup>
             <h5>Username</h5>
             <Label htmlFor="user_username" />
-            <Input onChange={this.handleChange} typeof="user_username" name="user_username" value={this.state.user_username} />
+            <Input onChange={this.handleChange} name="user_username" value={this.state.user_username} />
           </FormGroup>
           <FormGroup>
             <h5>Drink Name</h5>
@@ -111,8 +113,9 @@ class NotesCreate extends React.Component<NotesCreateProps, NotesCreateState> {
             <Label htmlFor="size" />
             <Input onChange={this.handleChange} typeof="size" name="size" placeholder="Small, Medium, Large?" value={this.state.size} />
           </FormGroup>
-          <Button type="submit">Save Coffee Note</Button>
+          <Link to='/allNotes'><Button type="submit" className='buttonstyle'>Save Coffee Note</Button></Link>
         </Form>
+        </div>
      
     );
   }

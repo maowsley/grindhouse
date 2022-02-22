@@ -10,6 +10,7 @@ interface NoteEditState {
  
 class NoteEdit extends React.Component<NoteEditProps, NoteEditState> {
   state: NoteEditState = { 
+    
     Note : []  
   
   }

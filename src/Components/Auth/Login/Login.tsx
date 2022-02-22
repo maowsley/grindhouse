@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import APIURL from '../../../helpers/enviorment'
 import './LoginDisplay.css';
+import {Link} from 'react-router-dom';
 
 interface Props {
   updateToken?: any
@@ -39,6 +40,7 @@ export default class Login extends React.Component<Props, LoginState> {
       }),
       headers: new Headers({
         'Content-Type': 'application/json'
+        
       })
     }).then(
       (response) => response.json()
@@ -65,7 +67,7 @@ export default class Login extends React.Component<Props, LoginState> {
             onChange={this.handleChange} value={this.state.password}
             name="password" type="password" required/>
         </FormGroup>
-        <Button type="submit">Login</Button>
+        <Link to='/allNotes'><Button type="submit">Login</Button></Link>
       </Form>
     )
   }

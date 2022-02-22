@@ -1,4 +1,4 @@
-let APIURL = " ";
+let APIURL = "";
 
 switch(window.location.hostname) {
     case 'localhost' || '127.0.0.1':
@@ -6,7 +6,7 @@ switch(window.location.hostname) {
     APIURL = "http://localhost:3000";
     break;
 
-    case 'https://maogrindhouse.herokuapp.com':
+    case 'maogrindhouse.herokuapp.com':
         APIURL = "https://ghserver-mao.herokuapp.com"
 }
 

@@ -1,7 +1,7 @@
 import   React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import NotesCreate from './CreateCoffeeNotes';
-//import WorkoutTable from './WorkoutTable';
+
 import APIURL from '../../helpers/enviorment';
 import NoteTable from './CoffeeCards';
 import './notesDisplay.css';
@@ -73,7 +73,7 @@ export default class NoteIndex extends React.Component<IProps, NotesIndexDetails
  fetchSize = (): void => {
     let requestHeaders: any = {
        'Content-Type': 'application/json',
-       'Authorization': this.props.token  
+       'Authorization': this.props.token 
     }
     fetch(`${APIURL}/drinkNote/size/:size`, {
        method: 'GET',
@@ -103,7 +103,23 @@ deleteNote = (): void => {
    })
 }
 
+editNote = (): void => {
+  let requestHeaders: any = {
+    'Content-Type': 'application/json',
+    'Authorization': this.props.token
+  }
+  fetch(`${APIURL}/drinkNote/edit:drinkNote_id`, {
+    method: "PUT",
+    headers: requestHeaders
+   
+ })
+ .then((res) => res.json())
+ .then((editData) => {
+   console.log(editData.note);
+   this.setState({ notes: editData.note })
+ })
 
+}
 
 
 
@@ -148,7 +164,13 @@ deleteNote = (): void => {
           <Col md="9">
             {this.state.notes.length > 0 ? 
                 this.state.notes.map(notes => {
-                  return <NoteTable key={notes.id} note={notes} />
+                  return <NoteTable key={notes.id} notes={notes} token={undefined} fetchNotes={function () {
+                      throw new Error('Function not implemented.');
+                  } } editUpdateNote={function (arg0: any): void {
+                      throw new Error('Function not implemented.');
+                  } } updateOn={function (): void {
+                      throw new Error('Function not implemented.');
+                  } } />
                 }) 
               : <h1>Create Your Coffee Notes Here!</h1>
             }

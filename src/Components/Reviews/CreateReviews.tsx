@@ -3,6 +3,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Component } from 'react';
 import APIURL from '../../helpers/enviorment';
 import'./CreateReview.css';
+import { Link } from 'react-router-dom';
 
 export interface ReviewCreateProps {
   token : string;
@@ -38,7 +39,7 @@ class ReviewsCreate extends React.Component<ReviewCreateProps, ReviewCreateState
       method: 'POST', 
       headers: new Headers({
         'Content-Type': 'application/json', 
-        'Authorization': this.props.token
+        'Authorization': `Bearer ${this.props.token}`
       }),
       body: JSON.stringify({
         log: {
@@ -81,7 +82,7 @@ class ReviewsCreate extends React.Component<ReviewCreateProps, ReviewCreateState
     return (
       <div>
       
-        <Form className='forms' onSubmit={this.handleSubmit}>
+        <Form className='revBack' onSubmit={this.handleSubmit}>
         <h3>Tell the world about GrindHouse!</h3>
           <FormGroup>
             <h3>Date</h3>
@@ -110,6 +111,7 @@ class ReviewsCreate extends React.Component<ReviewCreateProps, ReviewCreateState
           </FormGroup>
           <Button type="submit">Click to Submit Review</Button>
         </Form>
+        
       </div>
     );
   }
