@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import NotesCreate from './CreateCoffeeNotes';
 
 import APIURL from '../../helpers/enviorment';
-import NoteTable from './CoffeeCards';
+import CoffeeCard from './CoffeeCards';
 import './notesDisplay.css';
 
 
@@ -164,7 +164,7 @@ editNote = (): void => {
           <Col md="9">
             {this.state.notes.length > 0 ? 
                 this.state.notes.map(notes => {
-                  return <NoteTable key={notes.id} notes={notes} token={undefined} fetchNotes={function () {
+                  return <CoffeeCard key={notes.id} notes={notes} token={undefined} fetchNotes={function () {
                       throw new Error('Function not implemented.');
                   } } editUpdateNote={function (arg0: any): void {
                       throw new Error('Function not implemented.');
@@ -172,7 +172,7 @@ editNote = (): void => {
                       throw new Error('Function not implemented.');
                   } } />
                 }) 
-              : <h1>Create Your Coffee Notes Here!</h1>
+              : <div></div>
             }
           </Col>
         </Row>

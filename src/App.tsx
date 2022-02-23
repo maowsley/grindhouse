@@ -67,6 +67,7 @@ export default class App extends React.Component<any, SessionToken> {
             <Route path='/reviews' element={<ReviewsCreate token={''}/>} />
             <Route path='/getallReviews' element={ReviewIndex}/>
             <Route path='/allNotes' element={CoffeeCard}/>
+            <Route path='/logout' element={<App clearToken={this.clearToken} />} />
           </Routes>
         
         
