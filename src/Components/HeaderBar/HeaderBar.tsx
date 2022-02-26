@@ -30,7 +30,7 @@ interface HeaderProps {
                  <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          <IconButton className="BarBar"
             size="large"
             edge="start"
             color="inherit"
@@ -47,7 +47,7 @@ interface HeaderProps {
            <Link className="NavBarItem" to='/getallReviews'>Reviews</Link>
            <Link className="NavBarItem" to='/auth'>Coffee Notes</Link>
            {this.props.token &&
-           <Link className="NavBarItem"  to="/logout"><Button onClick={this.props.clearToken} >Logout</Button></Link>
+           <Button><Link className="NavBarItem" to='logout'{...this.props.clearToken}>Logout</Link></Button>
             };
             </Toolbar>
             </AppBar>

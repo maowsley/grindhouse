@@ -37,7 +37,7 @@ export default class NoteIndex extends React.Component<IProps, NotesIndexDetails
     sizeN: []
   }
    
-  fetchNotes = (): void => {
+  fetchNotes = ()  => {
     let requestHeaders: any = {
       'Content-Type': 'application/json',
       'Authorization': this.props.token
@@ -156,24 +156,13 @@ editNote = (): void => {
     return (
       <div className='notesBac'>
       <Container>
-       
+       <NoteIndex token={this.props.token} />
         <Row>
           <Col md="3">
             <NotesCreate fetchNotes={this.fetchNotes} token={this.props.token} />
           </Col>
           <Col md="9">
-            {this.state.notes.length > 0 ? 
-                this.state.notes.map(notes => {
-                  return <CoffeeCard key={notes.id} notes={notes} token={undefined} fetchNotes={function () {
-                      throw new Error('Function not implemented.');
-                  } } editUpdateNote={function (arg0: any): void {
-                      throw new Error('Function not implemented.');
-                  } } updateOn={function (): void {
-                      throw new Error('Function not implemented.');
-                  } } />
-                }) 
-              : <div></div>
-            }
+          
           </Col>
         </Row>
       </Container>

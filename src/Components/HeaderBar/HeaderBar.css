@@ -117,3 +117,7 @@
         background-color: #6D4C3D;
         z-index: 2;
     }
+
+    .BarBar {
+        min-height: 110 !important ;
+    }
