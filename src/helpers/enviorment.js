@@ -7,7 +7,7 @@ switch(window.location.hostname) {
     break;
 
     case 'maogrindhouse.herokuapp.com':
-        APIURL = "https://ghserver-mao.herokuapp.com"
+        APIURL = "https://serverghfinall.herokuapp.com"
 }
 
 export default APIURL;

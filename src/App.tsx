@@ -1,15 +1,16 @@
-import React, {Component} from 'react';
-import './App.css';
-import Auth from './Components/Auth/Auth';
-import { render } from '@testing-library/react';
-import ReviewIndex from './Components/Reviews/ReviewsIndex';
-import NoteIndex from './Components/DrinkNotes/CoffeeNotesIndex';
-import Home from './Components/Home/Home';
-import Header from './Components/HeaderBar/HeaderBar';
-import ReviewsCreate from './Components/Reviews/CreateReviews';
-import NotesCreate from './Components/DrinkNotes/CreateCoffeeNotes';
-import CoffeeCard from './Components/DrinkNotes/CoffeeCards';
+import React, { Component } from "react";
+import "./App.css";
+import Header from "./Components/HeaderBar/HeaderBar";
+import { Container } from "reactstrap";
+import Footer from "./Components/Footer/Footer";
 
+import HomeScreen from "./Components/screens/HomeScreen";
+import LoginScreen from './Components/screens/LoginScreen';
+import SignupScreen from './Components/screens/SignupScreen';
+import CreateNoteScreen from "./Components/screens/CreateNoteScreen";
+import CreateReviewScreen from "./Components/screens/CreateReviewScreen";
+import DisplayAllReviewScreen from "./Components/screens/DisplayAllReviewScreen";
+import DisplayAllNoteScreen from "./Components/screens/DisplayAllNoteScreen";
 import {
   BrowserRouter,
   Routes,
@@ -18,77 +19,33 @@ import {
 
 
 
-interface SessionToken {
-  token: string
-}
+const App = () => {
+   
+   
+return (
+  <div className="mainDiv">
+<BrowserRouter>
+<Header/>
+<main>
+  <Container>
+          <Routes>
+          <Route path='/'  element={<HomeScreen />}/>
+          <Route path='/signup' element={<SignupScreen />}/>
+          <Route path='/login' element={<LoginScreen />}/>
+          <Route path='/createNote' element={<CreateNoteScreen />}/>
+          <Route path='/createReview' element={<CreateReviewScreen/>}/>
+          <Route path='/displayReview' element={<DisplayAllReviewScreen />}/>
+          <Route path='/displayNote' element={<DisplayAllNoteScreen/>}/>
+         </Routes>
+  </Container>
+  </main>
+  <Footer/>
+  </BrowserRouter>
+</div>
 
-
-
-
-export default class App extends React.Component<any, SessionToken> {
-  state: SessionToken = {
-    token: ''
-  }
-
-  clearToken = (): void => {
-    localStorage.clear();
-    this.setState(
-      {token: ''}
-    );
-    alert('Welcome Back to the GrindHouse!')
-  }
-
-  updateToken = (newToken: string): void => {
-    localStorage.setItem("token", newToken);
-    this.setState({token: newToken});
-  }
-
-  //proctcedviews used to protect notes, and reviews and user login.signup
-  protectedViews = (): JSX.Element => {
-    return (this.state.token === localStorage.getItem('token') ? 
-    <NoteIndex token={this.state.token} /> : 
-     <><ReviewIndex token={this.state.token} /></>
-     
-    )}
- 
-
-
-  render() {
-    return (
-      <div className='mainDiv'>
-        <BrowserRouter>
-         < Header token={this.state.token}
-                  clearToken={this.clearToken}/>
-
-          <Routes > 
-            <Route path="/" element={<Home />}/>
-            <Route path="/auth" element={<Auth updateToken={this.updateToken} />}/>
-            <Route path='/makeNotes' element={<NotesCreate token={''}/>}/>
-            <Route path='/reviews' element={<ReviewsCreate token={''}/>} />
-            <Route path='/getallReviews' element={ReviewIndex}/>
-            <Route path='/allNotes' element={CoffeeCard}/>
-            <Route path='/logout' element={<App clearToken={this.clearToken} />} />
-          </Routes>
-        
-        
-      
-     
-        
-    
-        
-        
-       </BrowserRouter>
-      </div>
-      )
-  }
-
+)
 
 }
 
-  
-
-
- 
-
-
+export default App;
 
