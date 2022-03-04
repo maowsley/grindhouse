@@ -1,10 +1,11 @@
 import React from 'react'
 import {Navbar,  Nav, Container} from 'react-bootstrap'
 import {Link} from 'react-router-dom';
+import './HeaderBar.css';
 
 const HeaderBar = () => {
   return (
-    <Navbar bg="dark" variant='dark' expand="lg" collapseOnSelect>
+    <Navbar className='headerbar' bg="dark" variant='dark' expand="lg" collapseOnSelect>
   <Container>
     <Navbar.Brand href="/">Grind House</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />

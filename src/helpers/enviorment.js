@@ -6,7 +6,7 @@ switch(window.location.hostname) {
     APIURL = "http://localhost:3000";
     break;
 
-    case 'maogrindhouse.herokuapp.com':
+    case 'finalghclient-mao.herokuapp.com':
         APIURL = "https://serverghfinall.herokuapp.com"
 }
 

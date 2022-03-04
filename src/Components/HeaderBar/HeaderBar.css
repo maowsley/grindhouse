@@ -1,0 +1,6 @@
+.headerbar {
+    z-index: 3;
+    height: 20vh !important;
+    width: 250vh !important;
+    background-color: #6D4C3D !important;
+}
